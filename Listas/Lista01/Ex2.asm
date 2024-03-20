@@ -1,0 +1,63 @@
+;Carlos Henrique Hannas de Carvalho
+;NUSP: 11965988
+
+	ORG 0000H
+	SJMP PROG
+
+	ORG 0003H
+	SJMP EXT_0
+
+	ORG 0013H
+	SJMP EXT_1
+
+	ORG 001BH
+	SJMP T_1
+
+PROG:	SETB EA
+	SETB EX0
+	SETB EX1
+
+	SETB IT0
+	SETB IT1
+
+	SETB PX0
+	SETB PX1
+
+	SETB	ET1		; Habilita o Timer 1
+	MOV	TMOD,#00010000B	; Timer 1 no Modo 1
+
+	MOV 	TH1,#0ECh	; Timer: 5 ms
+	MOV	TL1,#077h
+	
+	SETB	TR1		; Ativa o Timer 1
+	SJMP $
+	
+
+EXT_0:	
+	CLR EA
+	MOV DPTR, #4000H
+	MOVX A, @DPTR
+	MOV DPTR, #4200H
+	MOVX @DPTR, A
+	SETB EA
+	RETI
+
+EXT_1:	
+	CLR EA
+	MOV DPTR, #4200H
+	MOVX A, @DPTR
+	MOV P1, A
+	SETB EA
+	RETI
+
+T_1:	
+	CLR EA
+
+	MOV 	TH1,#0ECh	
+	MOV	TL1,#077h
+	MOV A, P2
+	MOV DPTR, #4000H
+	MOVX @DPTR, A
+	SETB EA
+	RETI
+END

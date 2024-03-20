@@ -1,0 +1,9 @@
+CARLOS HENRIQUE HANNAS DE CARVALHO
+NUSP: 11965988
+LISTA 1 - EXERCÍCIO 5
+
+i) Para uma taxa de comunicação de 19200 BAUDS, TH1 = 253 (K = 2) e TH1 = 255 (K =1)
+
+ii) A tensão na linha de comunicação, em repouso: 12V
+
+iii) O StartBit possui 52 (us)
