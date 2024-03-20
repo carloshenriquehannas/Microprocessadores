@@ -1,0 +1,60 @@
+;Carlos Henrique Hannas de Carvalho
+;NUSP: 11965988
+
+	ORG 0000H
+	SJMP PROGRAM
+	ORG 0003H
+
+	CPL 20h.0
+	RETI
+
+PROGRAM: 
+	SETB P0.0
+        SETB EA
+        SETB EX0
+        SETB IT0
+        CLR  20h.0 
+
+LOOP:
+	CPL P0.0
+	JB 20h.0, HELP_4HZ
+	ACALL DELAY_1HZ
+	SJMP LOOP 
+
+DELAY_1HZ:
+	CLR EA
+	MOV	R3, #002h
+	MOV	R2, #0ADh
+	MOV	R1, #007h
+	MOV	R0, #0BCh
+	NOP
+	DJNZ	R0, $
+	DJNZ	R1, $-5
+	DJNZ	R2, $-9
+	DJNZ	R3, $-13
+	MOV	R0, #061h
+	DJNZ	R0, $
+	NOP
+	SETB EA
+	RET
+
+DELAY_4HZ:
+	CLR EA
+	MOV	R2, #01Ah
+	MOV	R1, #0B1h
+	MOV	R0, #017h
+	NOP
+	DJNZ	R0, $
+	DJNZ	R1, $-5
+	DJNZ	R2, $-9
+	MOV	R0, #06Eh
+	DJNZ	R0, $
+	NOP
+	SETB EA
+	RET
+
+HELP_4HZ: 
+	ACALL DELAY_4HZ
+	SJMP LOOP
+
+END
