@@ -1,0 +1,12 @@
+;Carlos Henrique Hannas de Carvalho
+;NUSP: 11965988
+
+ Y0 - 0000H - 1FFFH - ------                  
+ Y1 - 2000H - 3FFFH - ------                  
+ Y2 - 4000H - 5FFFH - Teclado Escrita (D4-D7) 
+ Y3 - 6000H - 7FFFH - Teclado Leitura (D0-D3) 
+ Y4 - 8000H - 9FFFH - 7 Segmentos Escrita     
+ Y5 - A000H - BFFFH - ADC Leitura             
+ Y6 - C000H - DFFFH - ADC Escrita             
+ Y7 - E000H - FFFFH - DAC Escrita             
+
